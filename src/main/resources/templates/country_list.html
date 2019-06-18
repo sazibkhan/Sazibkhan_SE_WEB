@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Country List</title>
+<th:block th:include="layout/header"></th:block>
+</head>
+<body>
+	<div class="container">
+
+		<form th:action="@{/fetch-countrypage}" method="get">
+			<div class="form-group">
+				<div class="col-sm-8">
+					<button type="submit" class="btn btn-primary">Add Country</button>
+				</div>
+			</div>
+		</form>
+
+		<div>
+			<form class="form-horizontal" th:object="${countryDTO}"
+				th:action="@{/saveCountry}" method="post"
+				enctype="multipart/form-data">
+				<div>
+					<h5>All Country List</h5>
+					<table class="table table-striped">
+						<tr>
+							<th>Id</th>
+							<th>Country Name</th>
+							<th>Update</th>
+							<th>Delete</th>
+						</tr>
+
+						<tr th:each="value, rowStat : ${countrys}">
+							<td th:text="${rowStat.count}"></td>
+							<td th:text="${value.countryName}">Country Name</td>
+
+							<td><a th:href="${'/country/edit/'+value.countryId}"
+								class="btn btn-danger">Edit</a></td>
+							<td><a th:href="${'/country/delete/'+value.countryId}"
+								class="btn btn-danger">Delete</a></td>
+
+						</tr>
+					</table>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

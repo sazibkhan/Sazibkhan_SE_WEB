@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Home Page</title>
+<th:block th:include="layout/header"></th:block>
+</head>
+
+
+<body>
+	<div class="container">
+		<form action="@{/players/by/country-id}" method="get">		
+		<div class="form-group">
+					<label class="col-sm-2 control-label">Country *</label>
+					<div class="col-sm-4">
+						<select id="countryId" class="form-control" onchange="findAllSubCategoryByCateId()">
+							<option value="default" class="form-control">Select Country</option>
+							<option th:each="value : ${countrys}"
+								th:value="${value.countryId}" th:text="${value.countryName}"
+								class="form-control" />
+						</select>
+						
+					</div>
+				</div>		
+		<div>
+		</form>
+
+
+				<div>
+					<h5>All players</h5>
+					<table class="table table-responsive">
+						<tr>
+							<th>players Id</th>
+							<th>players Name</th>
+							<th>players Role</th>
+							<th>Date of Barth</th>
+							<th>Country</th>
+							
+						</tr>
+						<tr th:each="value, rowStat : ${players}">
+							<td th:text="${rowStat.count}"></td>
+							<td th:text="${value.playersName}">Name</td>
+							<td th:text="${value.roleplayers}">Role</td>
+							<td th:text="${value.playerAge}">playerAge</td>
+							<td th:text="${value.country.countryName}">Country Name</td>
+							
+
+							  <!-- <td><a th:href="${'/player/edit/'+value.playerId}"
+								class="btn btn-danger">Edit</a></td> 
+
+							<td><a th:href="${'/player/delete/'+value.playerId}"
+								class="btn btn-danger">Delete</a></td>  -->
+						</tr>
+					</table>
+				</div>
+		</div>
+		
+		
+		
+		 <script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+		
+	</script>
+
+ <script type="text/javascript" th:inline="javascript">
+ 
+		$(document).ready(function findAllSubCategoryByCateId() {
+			
+			$("#countryId").change(function() {
+				var selectedOption = $('#countryId').val();
+				window.location.replace('/players/by/country-id?countryId=' + selectedOption);
+			});
+		});
+		
+	</script>
+</body>
+</html>
+

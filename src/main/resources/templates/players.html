@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>players</title>
+<th:block th:include="layout/header"></th:block>
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<form class="form-horizontal" th:object="${playersDTO}" method="post"
+				th:action="@{/savePlayerUrl}" enctype="multipart/form-data">
+
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-sm-1">
+						<input type="hidden" class="form-control" th:field="*{playerId}" />
+					</div>
+				</div>
+
+
+
+				<div class="form-group" >
+					<label class="col-sm-2 control-label">Country *</label>
+					<div class="col-sm-4">
+						<select class="form-control" th:field="*{countryDTO.countryId}">
+							<option value="default" class="form-control">Select
+								Country</option>
+							<option th:each="value : ${countrys}"
+								th:value="${value.countryId}" th:text="${value.countryName}"
+								class="form-control" />
+						</select>
+					</div>
+				</div>
+
+
+
+				<div class="form-group position-sticky">
+					<label class="col-sm-2 control-label">Players Name *</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{playersName}" />
+					</div>
+				</div>
+
+				<div class="form-group position-sticky">
+					<label class="col-sm-2 control-label">Role players *</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{roleplayers}" />
+					</div>
+				</div>
+
+				<div class="form-group position-sticky">
+					<label class="col-sm-2 control-label">Age *</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{age}" />
+					</div>
+				</div>
+
+				<div class="form-group" style="margin-left: 15%">
+					<div class="col-sm-8">
+						<button type="submit" class="btn btn-primary">Add Players</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+
+
+	</div>
+
+
+</body>
+</html>
+

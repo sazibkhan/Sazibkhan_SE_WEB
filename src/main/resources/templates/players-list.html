@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>players list</title>
+<th:block th:include="layout/header"></th:block>
+</head>
+
+
+<body>
+	<div class="container">
+		<div>
+			<form th:action="@{/fetch-playerpage}" method="get">
+				<div class="form-group">
+					<div class="col-sm-8">
+						<button type="submit" class="btn btn-primary">Add Playrs</button>
+					</div>
+				</div>
+			</form>
+
+			<form class="form-horizontal" th:object="${playersDTO}" method="post"
+				th:action="@{/savePlayerUrl}" enctype="multipart/form-data">
+				<div>
+					<h5>All players</h5>
+					<table class="table table-responsive">
+						<tr>
+							<th>players Id</th>
+							<th>players Name</th>
+							<th>players Role</th>
+							<th>Date of Barth</th>
+							<th>Country</th>
+							<th>Update</th>
+							<th>Delete</th>
+						</tr>
+						<tr th:each="value, rowStat : ${players}">
+							<td th:text="${rowStat.count}"></td>
+							<td th:text="${value.playersName}">Name</td>
+							<td th:text="${value.roleplayers}">Role</td>
+							<!-- <td th:text="${value.age}">Age</td> -->
+							<td th:text="${value.playerAge}">playerAge</td>
+							<td th:text="${value.countryDTO.countryName}">Country Name</td>
+
+							<td><a th:href="${'/player/edit/'+value.playerId}"
+								class="btn btn-danger">Edit</a></td>
+							<td><a th:href="${'/player/delete/'+value.playerId}"
+								class="btn btn-danger">Delete</a></td>
+						</tr>
+
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+

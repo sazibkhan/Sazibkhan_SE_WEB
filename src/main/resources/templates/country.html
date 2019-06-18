@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<title>Country</title>
+<th:block th:include="layout/header"></th:block>
+</head>
+<body>
+	<div class="container">
+
+		<div>
+			<form class="form-horizontal" th:object="${countryDTO}"
+				th:action="@{/saveCountry}" method="post"
+				enctype="multipart/form-data">
+
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-sm-1">
+						<input type="hidden" class="form-control" th:field="*{countryId}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"> Country Name:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{countryName}"
+							required />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-8">
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+	</div>
+
+
+</body>
+</html>

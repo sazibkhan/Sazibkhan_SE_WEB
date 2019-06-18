@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>SignUp</title>
+<th:block th:include="layout/loginHeader"></th:block>
+</head>
+<link type="text/css" rel="stylesheet" th:href="@{/css/style4login.css}" />
+<link type="javascript" th:href="@{/js/test.js}" />
+<script th:href="@{/js/test.js}"></script>
+<body class="bg-primary" style="margin-top: 12%">
+
+	<div class="container">
+		<div>
+			<center>
+	<h1>Sweet iTech Exam Test Registration......</h1>
+	</center>
+			<form class="form-horizontal" th:object="${UBI4SignUpDTO}"
+				method="post" th:action="@{/userRegistration}"
+				enctype="multipart/form-data">
+
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-sm-1">
+						<input type="hidden" class="form-control"
+							th:field="*{signUpInfoId}" />
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">User Name</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{userName}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{email}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"> password :</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{password}" />
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"> phone :</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{phone}" />
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"> National Id :</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" th:field="*{nationalId}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"></label>
+					<div class="col-sm-4">
+						<button type="submit"
+							class="bg-primary btn btn-default btn-lg btn-block">SignUp</button>
+					</div>
+					<br />
+
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
